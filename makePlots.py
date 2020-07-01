@@ -156,7 +156,7 @@ def plot_stack(channel, name,var, bin, low, high, ylabel, xlabel, setLog = False
     legend.SetFillColor(0);
     legend.SetLineColor(0);
 
-    legend.Draw("same")
+    # legend.Draw("same")
     plot_cms(True,lumi_str,c4)
 
 
@@ -230,8 +230,10 @@ arguments['mHT/met_jetsNotInEndcap'] = ['mHT_over_MET_jetsNotInEndcap', 'HTmiss_
 arguments['TkMET_pt/MET'] = ['TkMET_pt_over_MET', '(met_pt-TkMET_pt)/met_pt', 20, 0, 2, 'Events', '(PF MET-Track MET)/PF MET', True]
 
 arguments['mindPhiJetMet'] = ['mindPhiJetMet', 'mindPhiJetMet', 50, 0, 3.5, 'Events', 'Min(#Delta #Phi)_{jr}', True]
+arguments['dPhiLeadingJetMet'] = ['dPhiLeadingJetMet', 'dPhiLeadingJetMet', 50, 0, 3.5, 'Events', 'Min(#Delta #Phi)_{jr}', True]
+arguments['dPhiTrailingJetMet'] = ['dPhiTrailingJetMet', 'dPhiTrailingJetMet', 50, 0, 3.5, 'Events', 'Min(#Delta #Phi)_{jr}', True]
 # What will you plot
-variable_list = ['mindPhiJetMet', 'dphijj']
+variable_list = ['mindPhiJetMet', 'dphijj', 'dPhiLeadingJetMet', 'dPhiTrailingJetMet']
 
 processes     = []
 
