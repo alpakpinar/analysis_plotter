@@ -91,7 +91,8 @@ def plot_stack(channel, name,var, bin, low, high, ylabel, xlabel, setLog = False
             Variables[Type].SetMarkerStyle(20)
             Variables[Type].Scale(1,"width")
         else:
-            Variables[Type].SetFillColor(TColor.GetColor(physics_processes[Type]['color']))
+            if not Type == 'signal_vbf':
+                Variables[Type].SetFillColor(TColor.GetColor(physics_processes[Type]['color']))
             Variables[Type].SetLineColor(TColor.GetColor(physics_processes[Type]['color']))        
             Variables[Type].Scale(scale,"width")
             if Type is not 'signal_vbf':
@@ -139,15 +140,15 @@ def plot_stack(channel, name,var, bin, low, high, ylabel, xlabel, setLog = False
          for b in range(Variables['data'].GetNbinsX()):
              Variables['data'].SetBinContent(b+1,0.0)
 
-    Variables['data'].Draw("Esame")  
-    #Variables['signal_vbf'].SetLineWidth(2)
+    Variables['data'].Draw("Esame")
+    Variables['signal_vbf'].SetLineWidth(4)
     #Variables['signal_ggf'].SetLineWidth(2)
-    #Variables['signal_vbf'].SetLineColor(1)
+    Variables['signal_vbf'].SetLineColor(1)
     #Variables['signal_ggf'].SetLineColor(4)
-    #Variables['signal_vbf'].Draw("samehist")
+    Variables['signal_vbf'].Draw("samehist")
     #Variables['signal_ggf'].Draw("samehist")
 
-    #legend . AddEntry(Variables['signal_vbf'],physics_processes['signal_vbf']['label'] , "l")
+    legend . AddEntry(Variables['signal_vbf'],physics_processes['signal_vbf']['label'] , "l")
     #legend . AddEntry(Variables['signal_ggf'],physics_processes['signal_ggf']['label'] , "l")
 
     legend.SetShadowColor(0);
@@ -218,8 +219,23 @@ arguments['dphijj']    = ['dphijj', 'dphijj', 30, 0, 1.5, 'Events', '#Delta #phi
 
 arguments['dphicalopf'] = ['dphicalopf','deltaPhi(calometphi,pfmetphi)',50,0,5,'Events','#Delta#phi_{calomet,pfmet}',False]
 
+# mHT/MET ratios
+arguments['mHT/met_inclusive']       = ['mHT_over_MET_inclusive', 'HTmiss_jetsInclusive_pt/met_pt', 30, 0, 3, 'Events', 'mHT/MET',True]
+arguments['mHT/met_jetsInEndcap']    = ['mHT_over_MET_jetsInEndcap', 'HTmiss_jetsInEndcap_pt/met_pt', 30, 0, 3, 'Events', 'mHT/MET',True]
+arguments['mHT/met_jetsInBarrel']    = ['mHT_over_MET_jetsInBarrel', 'HTmiss_jetsInBarrel_pt/met_pt', 30, 0, 3, 'Events', 'mHT/MET',True]
+arguments['mHT/met_jetsInHF']        = ['mHT_over_MET_jetsInHF', 'HTmiss_jetsInHF_pt/met_pt', 30, 0, 3, 'Events', 'mHT/MET',True]
+arguments['mHT/met_jetsNotInEndcap'] = ['mHT_over_MET_jetsNotInEndcap', 'HTmiss_jetsNotInEndcap_pt/met_pt', 30, 0, 3, 'Events', 'mHT/MET',True]
+
+arguments['TkMET_pt/MET'] = ['TkMET_pt_over_MET', '(met_pt-TkMET_pt)/met_pt', 20, 0, 2, 'Events', '(PF MET-Track MET)/PF MET', True]
 # What will you plot
-variable_list = ['mjj', 'leadak4_pt', 'leadak4_eta', 'trailak4_pt', 'trailak4_eta', 'detajj']
+variable_list = ['mjj', 'leadak4_pt', 'leadak4_eta', 'trailak4_pt', 'trailak4_eta', 'detajj', 
+                 'mHT/met_inclusive',
+                 'mHT/met_jetsInEndcap',
+                 'mHT/met_jetsInBarrel',
+                 'mHT/met_jetsInHF',
+                 'mHT/met_jetsNotInEndcap',
+                 'TkMET_pt/MET'
+                 ]
 
 processes     = []
 

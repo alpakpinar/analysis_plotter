@@ -323,13 +323,13 @@ physics_processes = {
                                          ]                  
                                 },
         
-#        'signal_vbf'        : {'label':'qqH 125',
-#                               'datacard':'signal',
-#                               'color':1,
-#                               'ordering': 9,
-#                               'xsec' : 1.0,
-#                               'files':[dataDir+'vbfHinv_m125.root',],
-#                               },
+       'signal_vbf'        : {'label':'VBF H125',
+                              'datacard':'signal',
+                              'color':3,
+                              'ordering': 10,
+                              'xsec' : scale_map['VBF_HToInvisible_M125_pow_pythia8_2017'],
+                              'files':[dataDir+'tree_VBF_HToInvisible_M125_pow_pythia8_2017.root'],
+                              },
                 
         }
 
