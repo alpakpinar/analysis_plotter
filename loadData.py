@@ -18,7 +18,7 @@ def get_data_from_csv(csv_file):
 
 scale_map = get_data_from_csv(csv_file)
 
-dataDir = "/afs/cern.ch/work/a/aakpinar/public/forZeynep/VBF_trees/"
+dataDir = "/afs/cern.ch/work/a/aakpinar/public/forZeynep/VBF_trees/2020-06-30_nodphijj/"
 
 physics_processes = {
         # QCD Znunu processes
