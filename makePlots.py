@@ -23,7 +23,8 @@ blind = False
 vbf = False
 vtag = False
 
-folder = './plots'
+folder = sys.argv[1]
+print('MSG% Output folder for the plots: {}'.format(folder))
 
 binLowE = [200, 500, 800, 1200, 1600, 2000, 2750, 3500]
 nb = len(binLowE)-1
@@ -215,7 +216,7 @@ arguments['trailak4_eta']  = ['trailak4_eta','trailak4_eta',25,-5,5,'Events','Tr
 # Dijet quantities
 arguments['mjj']       = ['mjj','mjj',5,0,5000,'Events/GeV','m_{jj}',True]
 arguments['detajj']    = ['detajj', 'detajj', 40, 0, 8, 'Events', '#Delta #eta_{jj}', True]
-arguments['dphijj']    = ['dphijj', 'dphijj', 30, 0, 1.5, 'Events', '#Delta #phi_{jj}', True]
+arguments['dphijj']    = ['dphijj', 'dphijj', 30, 0, 3, 'Events', '#Delta #phi_{jj}', True]
 
 arguments['dphicalopf'] = ['dphicalopf','deltaPhi(calometphi,pfmetphi)',50,0,5,'Events','#Delta#phi_{calomet,pfmet}',False]
 
@@ -227,15 +228,10 @@ arguments['mHT/met_jetsInHF']        = ['mHT_over_MET_jetsInHF', 'HTmiss_jetsInH
 arguments['mHT/met_jetsNotInEndcap'] = ['mHT_over_MET_jetsNotInEndcap', 'HTmiss_jetsNotInEndcap_pt/met_pt', 30, 0, 3, 'Events', 'mHT/MET',True]
 
 arguments['TkMET_pt/MET'] = ['TkMET_pt_over_MET', '(met_pt-TkMET_pt)/met_pt', 20, 0, 2, 'Events', '(PF MET-Track MET)/PF MET', True]
+
+arguments['mindPhiJetMet'] = ['mindPhiJetMet', 'mindPhiJetMet', 50, 0, 3.5, 'Events', 'Min(#Delta #Phi)_{jr}', True]
 # What will you plot
-variable_list = ['mjj', 'leadak4_pt', 'leadak4_eta', 'trailak4_pt', 'trailak4_eta', 'detajj', 
-                 'mHT/met_inclusive',
-                 'mHT/met_jetsInEndcap',
-                 'mHT/met_jetsInBarrel',
-                 'mHT/met_jetsInHF',
-                 'mHT/met_jetsNotInEndcap',
-                 'TkMET_pt/MET'
-                 ]
+variable_list = ['mindPhiJetMet', 'dphijj']
 
 processes     = []
 
