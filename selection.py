@@ -22,7 +22,9 @@ def build_selection(selection):
 
     selections = ['signal','Zmm','Wmn','gjets','Zee','Wen']
     
-    snippets = {}
+    snippets = {
+        'dphijj' : ['dphijj > 1.5', 'signal'] # Orthogonal selection to SR for QCD estimation
+    }
     
     selectionString = ''
     for cut in snippets:
